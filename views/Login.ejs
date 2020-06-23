@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"  class="animated fadeInRight slow">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="img/logo 1.png" type="image/x-icon">
+
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+
+    <div class="container">
+        <form action="/login" method="POST">
+            <div class="part1" id="part1">
+                <video src="img/smoke.mp4" autoplay muted id="loginvideo"></video>
+                <h1>
+                    <span>"A </span>
+                    <span> life may</span>
+                    <span>depend on</span>
+                    <span>a gesture</span>
+                    <span>from you,</span>
+                    <span>a bottle</span>
+                    <span>of Blood.”</span>   
+                </h1>
+            </div>
+            <div class="part2">
+                <h3>Login</h3>
+                <div class="mail1">
+                    <input type="text" name="username" required autocomplete="off">
+                    <label for="username">Username</label>
+                </div>
+                <div class="password1">
+                    <input type="password" name="password" required autocomplete="off">
+                    <label for="password">Password</label>
+                </div>
+                <input type="submit" class="btn" id="submitbtn">
+                <p class="signup">New Donor?<span><a href="/donorsignup">SIGNUP</a></span></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="/JS/index.js"></script>
+</body>
+</html>

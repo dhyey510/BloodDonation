@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"  class="animated fadeInRight slow">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigup | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/img/logo 1.png" type="image/x-icon">
+    
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="CSS/Style.css">
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <section class="container">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+        <div class="part1">
+            <video src="img/smoke.mp4" autoplay muted loop id="loginvideo"></video>
+            <img src="/img/blood1.jpg" id="profile-img">
+            <div class="btns">
+                <label class="custom-file">Choose Image
+                    <input type="file" name="img-upload" id="img-upload">
+                </label>
+            </div>
+        </div>
+            <div class="part2">
+                <h3>Registration Info</h3>
+                <div class="username">
+                    <input type="text" name="username" id="username" required autocomplete="off">
+                    <label for="username">Name / Username </label>
+                </div>
+                <div class="email">
+                    <input type="email" name="email" id="email" required autocomplete="off">
+                    <label for="email">Email</label>
+                </div>
+                <div class="password">
+                    <input type="password" name="password" id="password" required autocomplete="off">
+                    <label for="password">Password</label>
+                </div>
+                <div class="phone">
+                    <input type="tel" name="phonei" id="phone" required autocomplete="off">
+                    <label for="phone">Phone</label>
+                </div>
+                <div class="city">
+                    <input type="text" name="cityi" id="city" required autocomplete="off">
+                    <label for="city">City</label>
+                </div>
+                <div class="bloodgrp">
+                    <select name="categ" id="categories" required>
+                        <option value="" disabled selected hidden>Choose Your Categories</option>
+                        <option value="organization">Organization</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn-signup" value="Sign Up">
+            </div> 
+        </form>
+    </section>
+
+    <script src="JS/index.js"></script>
+    
+</body>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindOrg | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/img/logo 1.png" type="image/x-icon">
+    
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <link rel="stylesheet" href="/CSS/findDonor.css">
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <header>
+        <!-- navbar -->
+        <nav id="navbar">
+            <div class="logo">
+                <img src="/img/logo 1.png">
+                <p>REDBLOOD</p>
+            </div>
+
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger-logo"><hr><hr><hr></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="/donorlogin">DONATE BLOOD</a></li>
+                                <li><a href="/donorlogin">REQUEST  FOR  BLOOD</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+        </nav>
+    </header>
+
+    <section class="inst">
+        
+        <div class="side-nav">
+            <div class="profile">
+                <img src='/uploadas/<%= User.img%>'>
+                <p><%= User.username %></p>
+            </div>
+            <div class="instruction">
+                <i class="fas fa-info-circle"></i>
+                <p><a href='/<%=User.id %>/instruction'> Instruction</a></p>
+            </div>
+            <div class="org">
+                <i class="fas fa-plus"></i>
+                <p><a href='/<%= User.id%>/findorg'> Find Organization</a></p>
+            </div>
+            <div class="req">
+                <i class="fas fa-tint"></i>
+                <p><a href="#"> Request For Donate</a></p>
+            </div>
+            <div class="cong">
+                <i class="fas fa-medal"></i>
+                <p><a href='/<%= User.id%>/final'> Congratulation</a></p>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p><a href="/logout"> Logout</a></p>
+                </div>
+                <div class="edit">
+                    <i class="fas fa-edit"></i>
+                    <p><a href='/<%= User.id%>/editprofile'> Edit Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-section">
+            <form action='/<%= User.id%>/findorg/search' method="GET">
+            <div class="search">
+                    <%if(Req){%>
+                        <input type="text" name="search" id="search" placeholder='<%= Req %>'>
+                        <i class="fas fa-search"></i>
+                    <%}else{%>
+                        <input type="text" name="search" id="search" placeholder="Search">
+                        <i class="fas fa-search"></i>
+                    <%}%>
+            <div class="filter">
+                <%if(Check){%>
+                    <%if(Check.length==2){%>
+                        <input type="checkbox" name="findorgby" id="near" value="near" checked>Near By
+                        <input type="checkbox" name="findorgby" id="sameblood" value="bldgrp" checked>Same Blood Group
+                    <%}else if(Check=="near"){%>
+                        <input type="checkbox" name="findorgby" id="near" value="near" checked>Near By    
+                        <input type="checkbox" name="findorgby" id="sameblood" value="bldgrp">Same Blood Group
+                    <%}else if(Check=="bldgrp"){%>
+                        <input type="checkbox" name="findorgby" id="near" value="near">Near By
+                        <input type="checkbox" name="findorgby" id="sameblood" value="bldgrp" checked>Same Blood Group    
+                    <%}else{%>
+                        <input type="checkbox" name="findorgby" id="near" value="near">Near By
+                        <input type="checkbox" name="findorgby" id="sameblood" value="bldgrp">Same Blood Group
+                    <%}%>
+                <%}else{%>
+                    <input type="checkbox" name="findorgby" id="near" value="near">Near By
+                    <input type="checkbox" name="findorgby" id="sameblood" value="bldgrp">Same Blood Group
+                <%}%>
+            </div>
+            <button class="btn" type="submit">Filter</button>
+            </div>
+            </form>
+            <div class="orgs">
+            <% if(Org.length>0){ %>
+               <% for(let i=0;i<Org.length;i++){ %>
+                   <%for(let j=0;j<Org[i].requestblood.length; j++){%>
+                    <div class="card">
+                        <div class="imgbox">
+                            <img src='/uploadas/<%= Org[i].img%>'>
+                            <h3><%= Org[i].username%></h3>
+                        </div>
+                        <!-- <p><%=Org[i].about %></p> -->
+                        <p id="secp">
+                            <span><b>Location</b></span>
+                            <span><%=Org[i].location %></span>
+                        </p>
+                        <p id="bl">
+                            <span><b>BloodGroup</b></span>
+                            <span><%=Org[i].requestblood[j].reqbloodgrp %></span>
+                        </p>
+                        <button class="btn"><a href='/<%= User.id%>/reqslot/<%= Org[i].id%>/<%=Org[i].requestblood[j].id %>'><i class="fas fa-hand-holding-water"></i> Donate</a></button>
+                    </div>
+                    <%}%>
+                <%}%>
+            <%}%>
+            </div>
+        </div>
+    </section>
+
+    <script src="/JS/index.js"></script>
+    </body>
+</html>

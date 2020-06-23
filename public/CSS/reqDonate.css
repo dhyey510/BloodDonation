@@ -1,0 +1,161 @@
+/* instruction page style */
+.inst{
+    position: relative;
+    width:100%;
+    height:100vh;
+    display: grid;
+    grid-template-columns: 20fr 80fr;
+    font-family: 'Poppins';
+    z-index:0;
+    overflow-y: hidden;
+}
+.side-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index:2;
+    box-shadow: 5px 0px 18px 0px rgba(133,129,133,1);
+}
+.side-nav .profile{
+    flex:0.5;
+    padding-top:25px;
+}
+.side-nav img{
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    background-color: aquamarine;
+    border: none;
+    margin-left:20px;
+}
+.profile p{
+    text-align: center;
+    font-size: 25px;
+    margin: 0px;
+    padding-top:10px;
+}
+.req{
+    width:100%;
+    display: grid;
+    grid-template-columns: 20fr 80fr;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 8px 28px 0px rgba(133,129,133,1);
+    margin-top:30px;
+}
+.req p a{
+    text-decoration: none;
+    color:var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+.req i{
+    color:var(--primary-color);
+    margin:1px auto;
+}
+.org, .instruction, .cong{
+    width:100%;
+    display: grid;
+    grid-template-columns: 20fr 80fr;
+    align-items:center;
+    justify-content: center;
+    margin-top:20px;
+}
+.org p a, .instruction p a, .cong p a{
+    color:#9e9898;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+.org i, .instruction i, .cong i{
+    color:#9e9898;
+    margin:1px auto;
+}
+
+/* main section style */
+.main-section{
+    background-color: #eeeeee;
+    padding:20px;
+    margin-bottom: 20px;
+    width:97.3%;
+    height:95vh;
+    overflow-y: scroll;
+}
+.main-section h3{
+    margin-left:20px;
+    color:black;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+.main-section hr{
+    width:90%;
+    margin-left:20px;
+    margin-top: 15px;
+    border:1px solid black;
+    padding-top:0px;
+}
+.main-section .orgname,.username,.email,.bloodgrp,.app-time,.app-datee,.phone{
+    margin-top:20px;
+    margin-left:20px;
+    width:100%;
+}
+.orgname h4,.username h4,.phone h4,.email h4,.bloodgrp h4,.app-datee h4,.app-time h4{
+    padding:0px;
+    margin:0px;
+    font-weight: 500;
+    font-size:20px;
+    margin-bottom: 5px;
+}
+.orgname p,.username p,.phone p,.email p,.bloodgrp p,.app-datee input,.app-time input{
+    display: inline-block;
+    width:40%;
+    font-size: 17px;
+    border:1px solid #9e9898;
+    padding:4px;
+    margin:0px;    
+    color:#949494;
+    cursor: not-allowed;
+    background-color:transparent;
+}
+.app-datee input,.app-time input{
+    color:black;
+    cursor: pointer;
+    padding:6px;
+    font-size: 17px;
+    background-color: white;
+    /* font-weight: bold; */
+}
+.main-section button{
+    width:15%;
+    display: block;
+    padding:5px;
+    margin-left:20px;
+    margin-top:5%;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    font-size:20px;
+    box-shadow: none;
+    background-color: black;
+}
+.main-section button a{
+    color:white;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+
+/* datedroper style */
+div.datedropper .picker .pick-btns .pick-submit:after {
+    content: 'OK';
+}
+.pick-i-l:before {
+    content: "<<";
+}
+.pick-i-r:before {
+    content: ">>";
+}

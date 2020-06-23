@@ -1,0 +1,11 @@
+'/' -> Home page
+'/donorlogin' -> login page
+'/donorsignup' -> signup page
+'/:id/instruction' -> instruction
+'/:id/findorg' -> finddonor page
+'/:id/reqblood' -> req donor page
+'/:id/slotstatus' -> final page
+
+
+
+

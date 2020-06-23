@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="/img/logo 1.png" type="image/x-icon">
+
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <link rel="stylesheet" href="/CSS/orgmain.css">
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <header>
+        <!-- navbar -->
+        <nav id="navbar">
+            <div class="logo">
+                <img src="/img/logo 1.png">
+                <p>REDBLOOD</p>
+            </div>
+
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger-logo"><hr><hr><hr></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="/donorlogin">DONATE BLOOD</a></li>
+                                <li><a href="/donorlogin">REQUEST  FOR  BLOOD</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+        </nav>
+    </header>
+
+    <section class="inst">
+        <div class="side-nav">
+            <div class="profile">
+                <img src='/uploadas/<%= User.img%>'>
+                <p><%= User.username%></p>
+            </div>
+            <div class="instruction">
+                <i class="fas fa-user"></i>
+                <p><a href='/<%=User.id%>/orgmain'> Your Profile</a></p>
+            </div>
+            <div class="org">
+                <i class="fas fa-plus"></i>
+                <p><a href='/<%=User.id%>/orgrequest'> Requests</a> 
+                    <%if(User.appointment.length>0){%>
+                        <span id="ntf"><%= User.appointment.length%></span>
+                    <%}else{%>
+                        <span id="ntf" style="display: none;"><%= User.appointment.length%></span>
+                    <%}%>
+                </p>
+            </div>
+            <div class="req">
+                <i class="fas fa-calendar-alt"></i>
+                <p><a href='/<%=User.id %>/schedual'> Schedule</a></p>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p><a href="/logout"> Logout</a></p>
+                </div>
+                <div class="edit">
+                    <i class="fas fa-edit"></i>
+                    <p><a href='/<%= User.id%>/orgeditprofile'> Edit Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-section">
+            <h3> History</h3>
+            <hr>
+            <div class="record">
+                <%if(User.record.length>0){%>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request Date</th>
+                            <th>Donor Name</th>
+                            <th>Accepted Date</th>
+                            <th>Blood Group</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(let i=0; i<User.record.length; i++){%>
+                            <tr>
+                                <td><%=User.record[i].reqdate %></td>
+                                <td>
+                                    <%if(User.record[i].username && User.record[i].username != " "){%>
+                                        <%= User.record[i].username%>
+                                    <%}else{%>
+                                        <span>Pending</span>
+                                    <%}%>
+                                </td>
+                                <td>
+                                    <%if(User.record[i].accdate && User.record[i].accdate != " "){%>
+                                        <%= User.record[i].accdate%>
+                                    <%}else{%>
+                                        <span>Pending</span>
+                                    <%}%>
+                                </td>
+                                <td><%= User.record[i].reqbloodgrp %></td>
+                                <td>
+                                    <%if(User.record[i].phone){%>
+                                        <%= User.record[i].phone%>
+                                    <%}else{%>
+                                        <span>Pending</span>
+                                    <%}%>
+                                </td>
+                            </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+                <%}else{%>
+                    <p  id="none" style="display: block;">No History</p>
+                <%}%>
+                <button class="btn" id="reqbtn">+</button>
+            </div>
+
+
+            <!-- req form -->
+            <div class="reqblood">
+                <div class="reqform">
+                    <p id="cancel">X</p>
+                    <h3>Request For Blood</h3>
+                    <hr>
+                    <form action='/<%= User.id%>/orgmain/req' method="POST">
+                        <select name="bldgroup" id="bld">
+                            <option value="" disabled selected hidden>Choose Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="B+">B+</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="A-">A-</option>
+                            <option value="B-">B-</option>
+                        </select>
+                        <input type="submit" value="Request" class="btn">
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <script src="/JS/index.js"></script>
+    <script>
+        const btn=document.querySelector('#reqbtn');
+        const reqform=document.querySelector('.reqblood');
+        const cancel=document.querySelector('#cancel');
+
+        cancel.addEventListener('click',function(){
+            reqform.style.visibility="hidden";
+            reqform.style.opacity="0";
+        });
+        btn.addEventListener('click',function(){
+            reqform.style.visibility="visible";
+            reqform.style.opacity="1";
+        });
+    </script>
+    </body>
+</html>

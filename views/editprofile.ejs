@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditProfile | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/img/logo 1.png" type="image/x-icon">
+
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <link rel="stylesheet" href="/CSS/editprofile.css">
+
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <header>
+        <!-- navbar -->
+        <nav id="navbar">
+            <div class="logo">
+                <img src="/img/logo 1.png">
+                <p>REDBLOOD</p>
+            </div>
+
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger-logo"><hr><hr><hr></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="/donorlogin">DONATE BLOOD</a></li>
+                                <li><a href="/donorlogin">REQUEST  FOR  BLOOD</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+        </nav>
+    </header>
+
+    <section class="inst">
+        <div class="side-nav">
+            <div class="profile">
+                <img src='/uploadas/<%= User.img%>'>
+                <p><%= User.username%></p>
+            </div>
+            <div class="instruction">
+                <i class="fas fa-info-circle"></i>
+                <p><a href='/<%=User.id %>/instruction'> Instruction</a></p>
+            </div>
+            <div class="org">
+                <i class="fas fa-plus"></i>
+                <p><a href='/<%=User.id %>/findorg'> Find Organization</a></p>
+            </div>
+            <div class="req">
+                <i class="fas fa-tint"></i>
+                <p><a href='#'> Request For Donate</a></p>
+            </div>
+            <div class="cong">
+                <i class="fas fa-medal"></i>
+                <p><a href='/<%= User.id%>/final'> Congratulation</a></p>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p><a href='/logout'> Logout</a></p>
+                </div>
+                <div class="edit">
+                    <i class="fas fa-edit"></i>
+                    <p><a href='/<%= User.id%>/editprofile'> Edit Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- main section -->
+        <div class="main-section">
+          <h3>Your Profile</h3>   
+          <hr>
+          <form action='/<%=User.id%>/update' method="POST">
+          <div class="under">
+            <div class="username">
+                <p>Username<span> *</span></p>
+                <input type="text" name="username" value='<%= User.username%>'>
+            </div>
+
+            <div class="phone">
+                <p>Phone</p>
+                <input type="text" name="phone" value='<%= User.phone%>'>
+            </div>
+
+            <div class="bloodgrp">
+                <%if(User.bloodgroup){%>
+                    <p>Blood Group<span> *</span></p>
+                    <input type="text" name="bldgrp" value='<%= User.bloodgroup%>'>    
+                <%}else{%>
+                <p>Blood Group<span> *</span></p>
+                <select name="bldgrp" id="bldgrp">
+                    <option value="" selected disabled hidden>Choose Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+                <%}%>
+            </div>
+            
+            <div class="email">
+                <p>Email</p>
+                <input type="text" name="email" value='<%= User.email%>'>
+            </div>
+
+            <div class="city">
+                <p>City</p>
+                <input type="text" name="city" value='<%=User.city %>'>
+            </div>
+
+            <div class="about">
+                <%if(User.about){%>
+                    <p>About<span> *</span></p>
+                    <textarea cols="50" rows="5" id="txt" name="about"><%=User.about %></textarea>                    
+                <%}else{%>
+                    <p>About<span> *</span></p>
+                    <textarea cols="50" rows="5" id="txt" name="about"></textarea>
+                <%}%>
+            </div>
+          </div>
+          <button class="btn" id="b" type="submit">Save</button>
+        </form>
+    </section>
+
+    
+    <script src="/JS/index.js"></script>
+    </body>
+</html>

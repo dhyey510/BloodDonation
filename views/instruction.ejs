@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="img/logo 1.png" type="image/x-icon">
+
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <link rel="stylesheet" href="/CSS/instruction.css">
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <header>
+        <!-- navbar -->
+        <nav id="navbar">
+            <div class="logo">
+                <img src="/img/logo 1.png">
+                <p>REDBLOOD</p>
+            </div>
+
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger-logo"><hr><hr><hr></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="/donorsignup">DONATE BLOOD</a></li>
+                                <li><a href="#">REQUEST  FOR  BLOOD</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+        </nav>
+    </header>
+
+    <section class="inst">
+        <div class="side-nav">
+            <div class="profile">
+                <img src='/uploadas/<%= User.img%>'>
+                <p><%= User.username%></p>
+            </div>
+            <div class="instruction">
+                <i class="fas fa-info-circle"></i>
+                <p><a href='/<%=User.id%>/instruction'> Instruction</a></p>
+            </div>
+            <div class="org">
+                <i class="fas fa-plus"></i>
+                <p><a href='/<%=User.id%>/findorg'> Find Organization</a></p>
+            </div>
+            <div class="req">
+                <i class="fas fa-tint"></i>
+                <p><a href="#"> Request For Donate</a></p>
+            </div>
+            <div class="cong">
+                <i class="fas fa-medal"></i>
+                <p><a href='/<%=User.id%>/final'> Congratulation</a></p>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p><a href="/logout"> Logout</a></p>
+                </div>
+                <div class="edit">
+                    <i class="fas fa-edit"></i>
+                    <p><a href='/<%= User.id%>/editprofile'> Edit Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-section">
+            <div class="eligible">
+                <h3>Eligibility Requirements</h3>
+                <hr>
+                <p>To be eligible to donate whole blood, plasma or platelets, you must be :
+                     <ul>
+                         <li>In good health.</li>
+                         <li>At least 16 or 17 years old, depending on the law in your state. Some states allow legal minors to donate with parent permission. While there's no legal upper age limit, policies may vary between individual donor centers.</li>
+                         <li>At least 110 pounds.</li>
+                         <li>Able to pass the physical and health-history assessments.</li>
+                     </ul>  
+                    Eligibility requirements differ slightly between different types of blood donation, and from center to center. Check with your local donor center for specifics.
+                </p>
+            </div>
+
+            <div class="food">
+               <h3> Food and medications</h3>
+               <hr> 
+               <p> Before your blood donation:
+                  <ul>
+                      <li>Get plenty of sleep the night before you plan to donate.</li>
+                      <li>Eat a healthy meal before your donation.</li>
+                      <li>Avoid fatty foods, such as hamburgers, french fries or ice cream before donating. Tests for infections done on all donated blood can be affected by fats that appear in your blood for several hours after eating fatty foods.</li>
+                      <li>Drink an extra 16 ounces (473 milliliters) of water and other fluids before the donation.</li>
+                      <li>If you are a platelet donor, remember that you must not take aspirin for two days prior to donating. Otherwise, you can take your normal medications as prescribed.</li>
+                  </ul>  
+                </p>
+            </div>
+
+            <div class="before-proc">
+                <h3>Before the procedure</h3>
+                <hr>
+                <p>Before you can donate blood, you will be asked to fill out a confidential medical history that includes direct questions about behaviors known to carry a higher risk of bloodborne infections — infections that are transmitted through the blood. All of the information from this evaluation is kept strictly confidential.
+                    Because of the risk of bloodborne infections, not everyone can donate blood. The following high-risk groups are not eligible to donate blood:
+                    <ul>
+                        <li>Anyone who has ever used injection drugs not prescribed by a doctor, such as illegal injection drugs or steroids not prescribed by a doctor</li>
+                        <li>Anyone who has a congenital coagulation factor deficiency</li>
+                        <li>Anyone with a positive test for HIV</li>
+                        <li>Anyone who has had babesiosis, a rare and severe tick-borne disease, or the parasitic infection Chagas' disease</li>
+                        <li>Anyone who has risk factors for the degenerative brain disorder Creutzfeldt-Jakob disease (CJD) or who has a blood relative with CJD</li>
+                    </ul>    
+                    You will also have a brief physical exam, which includes checking your blood pressure, pulse and temperature. A small sample of blood is taken from a finger prick and is used to check the oxygen-carrying component of your blood (hemoglobin level). If your hemoglobin concentration is normal and you've met all the other screening requirements, you can donate blood.
+                </p>
+            </div>
+
+            <div class="during-proc">
+                <h3>During the procedure</h3>
+                <hr>
+                <p>
+                    You lie or sit in a reclining chair with your arm extended on an armrest. A blood pressure cuff or tourniquet is placed around your upper arm to fill your veins with more blood. This makes the veins easier to see and easier to insert the needle into, and also helps fill the blood bag more quickly. Then the skin on the inside of your elbow is cleaned.
+
+                    A new, sterile needle is inserted into a vein in your arm. This needle is attached to a thin, plastic tube and a blood bag. Once the needle is in place, you tighten your fist several times to help the blood flow from the vein. Blood initially is collected into tubes for testing. When these have been collected, blood is allowed to fill the bag, about a pint. The needle is usually in place about 10 minutes. When complete, the needle is removed, a small bandage is placed on the needle site and a dressing is wrapped around your arm.
+
+                    Another method of donating blood becoming increasingly common is apheresis. During apheresis, blood is drawn from one arm and pumped through a machine that separates out a specific component, such as platelets. The rest of the blood is then returned through a vein in your other arm. This process allows more of a single component to be collected. It takes longer than standard blood donation — typically up to two hours.
+                </p>
+            </div>
+            
+            <div class="after-proc">
+                <h3>After the procedure</h3>
+                <hr>
+                <p>
+                    After donating you sit in an observation area, where you rest and eat a light snack. After 15 minutes, you can leave. After your blood donation:
+                    <ul>
+                        <li>Drink extra fluids for the next day or two.</li>
+                        <li>Avoid strenuous physical activity or heavy lifting for the next five hours.</li>
+                        <li>If you feel lightheaded, lie down with your feet up until the feeling passes.</li>
+                        <li>Keep the bandage on your arm and dry for five hours.</li>
+                        <li>If you have bleeding after removing the bandage, put pressure on the site and raise your arm until the bleeding stops.</li>
+                        <li>If bleeding or bruising occurs under the skin, apply a cold pack to the area periodically during the first 24 hours.</li>
+                        <li>If your arm is sore, take a pain reliever such as acetaminophen (Tylenol, others). Avoid taking aspirin or ibuprofen (Advil, Motrin IB, others) for the first 24 to 48 hours after donation.</li>
+                    </ul>
+                    Contact the blood donor center or your doctor if you forgot to report any important health information before you donated or if you had any problems or needed medical care after giving blood
+                </p>
+            </div>
+            
+            <button class="btn"><a href='/<%=User.id%>/findorg'>Next Step</a></button>
+        </div>
+    </section>
+
+    <script src="/JS/index.js"></script>
+    </body>
+</html>

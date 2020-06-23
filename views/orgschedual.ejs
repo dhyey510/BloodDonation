@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+
+    <link rel="shortcut icon" href="/img/logo 1.png" type="image/x-icon">
+    
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <link rel="stylesheet" href="/CSS/orgschedual.css">
+
+
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <header>
+        <!-- navbar -->
+        <nav id="navbar">
+            <div class="logo">
+                <img src="/img/logo 1.png">
+                <p>REDBLOOD</p>
+            </div>
+
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger-logo"><hr><hr><hr></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="/donorlogin">DONATE BLOOD</a></li>
+                                <li><a href="/donorlogin">REQUEST  FOR  BLOOD</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+        </nav>
+    </header>
+
+    <section class="inst">
+        <div class="side-nav">
+            <div class="profile">
+                <img src='/uploadas/<%= User.img%>'>
+                <p><%= User.username%></p>
+            </div>
+            <div class="instruction">
+                <i class="fas fa-user"></i>
+                <p><a href='/<%=User.id%>/orgmain'> Your Profile</a></p>
+            </div>
+            <div class="org">
+                <i class="fas fa-plus"></i>
+                <p>
+                    <a href='/<%=User.id%>/orgrequest'> Requests</a> 
+                    <%if(User.requestblood.length>0){%>
+                        <span id="ntf"><%= User.requestblood.length%></span>
+                    <%}else{%>
+                        <span id="ntf" style="display: none;"><%= User.requestblood.length%></span>
+                    <%}%>
+                </p>
+            </div>
+            <div class="req">
+                <i class="fas fa-calendar-alt"></i>
+                <p><a href='/<%= User.id%>/schedual'> Schedule</a></p>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p><a href="/logout"> Logout</a></p>
+                </div>
+                <div class="edit">
+                    <i class="fas fa-edit"></i>
+                    <p><a href='/<%= User.id%>/editprofile'> Edit Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- main section -->
+        <div class="main-section">
+            <div class="today">
+                <div class="date-card">
+                    <h3><%=currentDate%></h3>
+                    <p><%=currentDay %> , <%= currentMonth%> <%= currentYear%></p>
+                </div>
+                <div class="slots">
+                    <%let j=0;%>
+                    <%for(let i=0;i<User.schedual.length;i++){%>
+                        <%if(User.schedual[i].slotdate==Date){%>
+                            <div class="card">
+                                <h3><%= User.schedual[i].username%></h3>
+                                <p><%= User.schedual[i].slottime%></p>
+                                <p><%=User.schedual[i].bloodgroup %></p>
+                                <a href='/<%= User.id%>/schedule/<%= User.schedual[i].id%>/cnf'>Done</a>
+                                <a href='/<%= User.id%>/schedule/<%= User.schedual[i].id%>/cancel' id="cancel">Cancel</a>
+                            </div>
+                            <%j++;%>
+                        <%}%>
+                    <%}%>
+                    <%if(j==0){%>
+                        <p id="none">No Schedule Today</p>
+                    <%}%>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    
+    <script src="/JS/index.js"></script>
+    </body>
+</html>

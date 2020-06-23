@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request | RedBlood</title>
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <!-- link for animate library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <!-- link for google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+
+     <!-- link for datedroper and timedroper -->
+     <script src="/JS/jquery-1.10.2.min.js"></script>
+     <script src="/JS/datedropper.js"></script>
+     <script src="/JS/timedropper.js"></script>
+     <link rel="stylesheet" href="/CSS/timedropper.css">
+     <link rel="stylesheet" href="/CSS/datedropper.css">
+
+     <link rel="shortcut icon" href="/img/logo 1.png" type="image/x-icon">
+     
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" href="/CSS/Style.css">
+    <link rel="stylesheet" href="/CSS/reqDonate.css">
+</head>
+<body onload="loading()">
+    
+    <div class="loading">
+        <div class="txt">
+            <p>Loading...</p>
+        </div>
+        <img src="/img/heartbeat.svg">
+        <div class="wrapper"></div>
+    </div>
+
+    <header>
+        <!-- navbar -->
+        <nav id="navbar">
+            <div class="logo">
+                <img src="/img/logo 1.png">
+                <p>REDBLOOD</p>
+            </div>
+
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger-logo"><hr><hr><hr></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="/donorlogin">DONATE BLOOD</a></li>
+                                <li><a href="/donorlogin">REQUEST  FOR  BLOOD</a></li>
+                                <li><a href="#">ABOUT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+            </div> 
+        </nav>
+    </header>
+
+    <section class="inst">
+        <div class="side-nav">
+            <div class="profile">
+                <img src="/uploadas/<%= User.img%>">
+                <p><%=User.username %></p>
+            </div>
+            <div class="instruction">
+                <i class="fas fa-info-circle"></i>
+                <p><a href='/<%= User.id%>/instruction'> Instruction</a></p>
+            </div>
+            <div class="org">
+                <i class="fas fa-plus"></i>
+                <p><a href='/<%= User.id%>/findorg'> Find Organization</a></p>
+            </div>
+            <div class="req">
+                <i class="fas fa-tint"></i>
+                <p><a href='#'> Request For Donate</a></p>
+            </div>
+            <div class="cong">
+                <i class="fas fa-medal"></i>
+                <p><a href='/<%= User.id%>/final'> Congratulation</a></p>
+            </div>
+            <div class="bottom">
+                <div class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p><a href="/logout"> Logout</a></p>
+                </div>
+                <div class="edit">
+                    <i class="fas fa-edit"></i>
+                    <p><a href='/<%= User.id%>/editprofile'> Edit Profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- main section -->
+        <form action='/<%= User.id%>/reqslot/<%= Org.id%>/req/<%=Slot %>' method="POST">
+            <div class="main-section">
+            <h3>Donor's Details</h3>   
+            <hr>
+            <div class="orgname">
+                <h4>Organization name</h4>
+                <p id="orgname" name="orgname"><%= Org.username%></p>
+            </div>
+            <div class="username">
+                <h4>Username</h4>
+                <p id="username" name="username"><%= User.username%></p>
+            </div>
+            
+            <div class="phone">
+                <h4>Phone</h4>
+                <p id="phone" name="phone"><%= User.phone%></p>
+            </div>
+
+            <div class="app-datee">
+                <h4>Appointment Date</h4>
+                <input id="app-date" type="text" name="appdate"/>
+            </div>
+
+            <div class="app-time">
+                <h4>Appointment Time</h4>
+                <input type="text" id="alarm"  name="apptime"/>
+            </div>
+
+            <div class="bloodgrp">
+                <h4>Blood Group</h4>
+                <p id="blgrp" name="bldgrp"><%=User.bloodgroup %></p>
+            </div>
+                
+            <div class="email">
+                <h4>Email</h4>
+                <p id="email" name="email"><%=User.email %></p>
+            </div>
+            <button class="btn" type="submit">Send Request</button>
+            </div>
+        </form>
+    </section>
+
+    
+    <script src="/JS/index.js"></script>
+    <script>
+        
+        $('#app-date').dateDropper();
+
+        $( "#alarm" ).timeDropper();
+    </script>
+    </body>
+</html>
